@@ -16,6 +16,14 @@ export const InputLabel = styled.Text`
   `}
 `;
 
+export const ButtonText = styled.Text`
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+    font-size: ${theme.metrics.px(22)}px;
+    font-weight: 600;
+  `}
+`;
+
 export const DetailTitle = styled.Text`
   ${({ theme }) => css`
     font-size: ${theme.metrics.px(24)}px;
