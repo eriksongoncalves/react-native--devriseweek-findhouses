@@ -10,5 +10,13 @@ export default {
     purpleTransparent: 'rgba(45,40,91,0.64)',
     darkTransparent: 'rgba(18,16,37,0.59)'
   },
-  metrics
+  metrics,
+  font: {
+    family: {
+      regular: 'Montserrat_400Regular',
+      medium: 'Montserrat_500Medium',
+      semibold: 'Montserrat_600SemiBold',
+      bold: 'Montserrat_700Bold'
+    }
+  }
 } as const;

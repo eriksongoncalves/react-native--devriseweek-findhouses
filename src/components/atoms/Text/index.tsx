@@ -5,6 +5,7 @@ export const Title = styled.Text`
     font-size: ${theme.metrics.px(28)}px;
     color: ${theme.colors.white};
     font-weight: bold;
+    font-family: ${theme.font.family.bold};
   `}
 `;
 
