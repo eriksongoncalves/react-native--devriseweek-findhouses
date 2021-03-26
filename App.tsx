@@ -1,16 +1,33 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-
 import { ThemeProvider } from 'styled-components';
+import { ActivityIndicator } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
+import {
+  useFonts,
+  Montserrat_400Regular,
+  Montserrat_500Medium,
+  Montserrat_600SemiBold,
+  Montserrat_700Bold
+} from '@expo-google-fonts/montserrat';
 
 import theme from './src/styles/theme';
 
+import HomeScreen from './src/screens/Home';
+
 export default function App() {
-  return (
+  const [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_600SemiBold,
+    Montserrat_700Bold
+  });
+  return !fontsLoaded ? (
+    <ActivityIndicator />
+  ) : (
     <ThemeProvider theme={theme}>
-      <View>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
+      <StatusBar style="light" translucent={false} />
+      <HomeScreen />
     </ThemeProvider>
   );
 }
