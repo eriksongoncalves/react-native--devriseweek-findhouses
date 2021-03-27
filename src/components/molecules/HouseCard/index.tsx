@@ -4,22 +4,28 @@ import * as S from './styles';
 import { CardTitle, CardDescription, CardHightLightText } from '../../atoms';
 
 type HouseCardProps = {
+  title: string;
+  description: string;
   imgUri: string;
+  price: number;
 };
 
-function HouseCard({ imgUri }: HouseCardProps) {
+function HouseCard({ title, description, imgUri, price }: HouseCardProps) {
+  const formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
   return (
     <S.Wrapper>
       <S.Image source={{ uri: imgUri }} />
       <S.TextContainer>
         <S.Description>
-          <CardTitle>Casa à venda</CardTitle>
-          <CardDescription>
-            Rua Casemiro de Abreu, 1908 - Casa E, Rio de Janeiro
-          </CardDescription>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
         </S.Description>
 
-        <CardHightLightText>U$ 200,00</CardHightLightText>
+        <CardHightLightText>{formattedPrice.format(price)}</CardHightLightText>
       </S.TextContainer>
     </S.Wrapper>
   );

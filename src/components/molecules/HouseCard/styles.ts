@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components/native';
 
 export const Wrapper = styled.TouchableOpacity`
   ${({ theme }) => css`
-    width: 100%;
     border-radius: ${theme.metrics.px(24)}px;
     background-color: ${theme.colors.backgroundLight};
     margin-top: ${theme.metrics.px(24)}px;
@@ -13,7 +12,7 @@ export const Wrapper = styled.TouchableOpacity`
 export const Image = styled.Image`
   ${({ theme }) => css`
     width: 100%;
-    height: ${theme.metrics.hp(200)}px;
+    height: ${theme.metrics.px(200)}px;
   `}
 `;
 
