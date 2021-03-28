@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { ActivityIndicator } from 'react-native';
@@ -13,7 +14,7 @@ import {
 
 import theme from './src/styles/theme';
 
-import HomeScreen from './src/screens/Home';
+import Routes from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,7 @@ export default function App() {
   ) : (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" translucent={false} />
-      <HomeScreen />
+      <Routes />
     </ThemeProvider>
   );
 }
