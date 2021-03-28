@@ -2,22 +2,25 @@ import React from 'react';
 
 import * as S from './styles';
 import { CardTitle, CardDescription, CardHightLightText } from '../../atoms';
+import { formattedPrice } from '../../../utils/formattedPrice';
 
 type HouseCardProps = {
   title: string;
   description: string;
   imgUri: string;
   price: number;
+  onPress: () => void;
 };
 
-function HouseCard({ title, description, imgUri, price }: HouseCardProps) {
-  const formattedPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  });
-
+function HouseCard({
+  title,
+  description,
+  imgUri,
+  price,
+  onPress
+}: HouseCardProps) {
   return (
-    <S.Wrapper>
+    <S.Wrapper onPress={onPress}>
       <S.Image source={{ uri: imgUri }} />
       <S.TextContainer>
         <S.Description>
@@ -25,7 +28,7 @@ function HouseCard({ title, description, imgUri, price }: HouseCardProps) {
           <CardDescription>{description}</CardDescription>
         </S.Description>
 
-        <CardHightLightText>{formattedPrice.format(price)}</CardHightLightText>
+        <CardHightLightText>{formattedPrice(price)}</CardHightLightText>
       </S.TextContainer>
     </S.Wrapper>
   );

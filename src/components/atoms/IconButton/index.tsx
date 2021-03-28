@@ -1,14 +1,26 @@
 import React, { ReactNode } from 'react';
+import { ThemeColors } from '../../../@types/global';
 
 import * as S from './styles';
 
 type IconButtonProps = {
-  transparent?: boolean;
   children: ReactNode;
+  onPress?: () => void;
+  background?: ThemeColors;
+  size?: number;
 };
 
-function IconButton({ transparent = false, children }: IconButtonProps) {
-  return <S.Wrapper transparent={transparent}>{children}</S.Wrapper>;
+function IconButton({
+  children,
+  onPress,
+  background = 'backgroundLight',
+  size = 48
+}: IconButtonProps) {
+  return (
+    <S.Wrapper onPress={onPress} background={background} size={size}>
+      {children}
+    </S.Wrapper>
+  );
 }
 
 export default IconButton;

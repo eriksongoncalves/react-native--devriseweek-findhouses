@@ -1,25 +1,25 @@
 import styled, { css, DefaultTheme } from 'styled-components/native';
+import { ThemeColors } from '../../../@types/global';
 
 type WrapperProps = {
-  transparent?: boolean;
+  size: number;
+  background: ThemeColors;
 };
 
 const wrapperModifier = {
-  transparent: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.backgroundLight};
+  background: (theme: DefaultTheme, bgColor: ThemeColors) => css`
+    background-color: ${theme.colors[bgColor]};
   `
 };
 
 export const Wrapper = styled.TouchableOpacity<WrapperProps>`
-  ${({ theme, transparent }) => css`
-    display: flex;
-    width: ${theme.metrics.px(48)}px;
-    height: ${theme.metrics.px(48)}px;
+  ${({ theme, size = 48, background }) => css`
+    width: ${theme.metrics.px(size)}px;
+    height: ${theme.metrics.px(size)}px;
     align-items: center;
     justify-content: center;
     border-radius: ${theme.metrics.px(6)}px;
-    background: ${theme.colors.purpleTransparent};
 
-    ${transparent && wrapperModifier.transparent(theme)}
+    ${background && wrapperModifier.background(theme, background)}
   `}
 `;

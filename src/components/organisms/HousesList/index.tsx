@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import * as S from './styles';
 import { HouseCard } from '../../molecules';
@@ -10,6 +11,8 @@ type HousesListProps = {
 };
 
 function HousesList({ data, children }: HousesListProps) {
+  const navigation = useNavigation();
+
   return (
     <S.List
       data={data}
@@ -20,6 +23,9 @@ function HousesList({ data, children }: HousesListProps) {
           description={`${item.address.neighborhood_name} - ${item.address.state}`}
           imgUri={item.photos[0].href}
           price={item.community.price_max}
+          onPress={() =>
+            navigation.navigate('Detail', { propertyId: item.property_id })
+          }
         />
       )}
       ListHeaderComponent={children}

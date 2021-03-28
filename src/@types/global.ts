@@ -1,3 +1,7 @@
+import theme from '../styles/theme';
+
+export type ThemeColors = keyof typeof theme.colors;
+
 type Address = {
   line: string;
   state: string;
@@ -9,7 +13,15 @@ type Photo = {
 };
 
 type Community = {
+  baths_max: number;
+  baths_min: number;
+  beds_max: number;
+  beds_min: number;
   price_max: number;
+};
+
+type Features = {
+  text: string[];
 };
 
 export type Property = {
@@ -17,4 +29,9 @@ export type Property = {
   address: Address;
   photos: Photo[];
   community: Community;
+  lot_size: {
+    size: number;
+    units: string;
+  };
+  features?: Features[];
 };

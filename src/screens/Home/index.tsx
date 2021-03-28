@@ -3,10 +3,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native';
 
 import * as S from './styles';
-import { Title, Input, IconButton, HousesList } from '../../components';
+import { Title, Input, IconButton, HousesList, Loader } from '../../components';
 import { getHousesCall } from '../../services/calls';
 import { Property } from '../../@types/global';
-import { Loader } from '../../components/molecules/Loader';
 
 function HomeScreen() {
   const [houses, setHouses] = useState<Property[]>([]);

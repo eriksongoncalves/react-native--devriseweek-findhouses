@@ -8,11 +8,13 @@ type LoaderProps = {
   text?: string;
 };
 
-export const Loader = ({ text }: LoaderProps): JSX.Element => {
+function Loader({ text = '' }: LoaderProps) {
   return (
     <S.Wrapper>
       <S.LoaderIndicator size="large" color="white" />
       <DetailText>{text || 'Carregando...'}</DetailText>
     </S.Wrapper>
   );
-};
+}
+
+export default Loader;

@@ -18,3 +18,13 @@ export const getHousesCall = async () => {
 
   return result.data.properties;
 };
+
+export const getHouseDetail = async (property_id: string) => {
+  const result = await api.get<GetHousesCall>('/properties/v2/detail', {
+    params: {
+      property_id
+    }
+  });
+
+  return result.data.properties[0];
+};
