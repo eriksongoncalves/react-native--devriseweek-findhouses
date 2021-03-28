@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native';
 
@@ -6,18 +6,21 @@ import * as S from './styles';
 import { Title, Input, IconButton, HousesList } from '../../components';
 import { getHousesCall } from '../../services/calls';
 import { Property } from '../../@types/global';
+import { Loader } from '../../components/molecules/Loader';
 
 function HomeScreen() {
   const [houses, setHouses] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const callGetHouses = async () => {
+  const callGetHouses = useCallback(async () => {
     const result = await getHousesCall();
     setHouses(result);
-  };
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
     callGetHouses();
-  }, []);
+  }, [callGetHouses]);
 
   return (
     <SafeAreaView style={{ backgroundColor: '#1e1d42' }}>
@@ -34,6 +37,7 @@ function HomeScreen() {
             </S.TopContainer>
 
             <Input label="Localização" placeholder="Digite o endereço" />
+            {loading && <Loader />}
           </>
         </HousesList>
       </S.ScreenContainer>
